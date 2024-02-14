@@ -9,13 +9,13 @@
     justify-content: center;
     margin-bottom: 25px;
 }
-
+    
 .drop-area.active{
     background-color: #ddd;
     color: #000000;
     border: 2px dashed blue;
 }
-
+    
 .drop-area button{
     background-color: blue;
     color: #ffffff;
@@ -26,12 +26,12 @@
     cursor: pointer;
     border:2px solid blue;
 }
-
+    
 .drop-area button:hover{
     background-color: transparent;
     color: blue;
 }
-
+    
 .previewImage{
     width: 100%;
     display:flex;
@@ -57,7 +57,7 @@
     margin-left: 40px;
     cursor: pointer;
 }
-
+        
 .previewImage .removeBtn:hover{
     background-color:transparent;
     color:red;
