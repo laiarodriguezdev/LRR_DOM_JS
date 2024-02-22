@@ -10,11 +10,13 @@
     <title>Document</title>
 </head>
 <body>
-    <div class="drop-area" draggable="true">
-        <h2>Drag & Drop files</h2>
-        <button>Upload files</button>
-        <input type="file" name="inputFiles[]" id="input-file" hidden multiple />
-    </div>
-    <div id="preview"></div>
+    <form id="uploadForm" action="upload.php" method="post" enctype="multipart/form-data">
+        <div class="drop-area" draggable="true">
+            <h2>Drag & Drop files</h2>
+            <button>Upload files</button>
+            <input type="file" name="inputFiles[]" id="input-file" hidden multiple />
+        </div>
+        <div id="preview"></div>
+    </form>
 </body>
 </html>
