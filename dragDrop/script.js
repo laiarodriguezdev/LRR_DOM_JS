@@ -1,90 +1,79 @@
-let arrayDocuments=[];
+let arrayDocuments = [];
 
-const dropArea = document.querySelector('.dropArea');
-const dragDropText = document.querySelector('h2');
-const button = document.querySelector('button');
-const input = document.querySelector('#input-file');
-const preview = document.querySelector('#preview');
+let dropArea = document.querySelector('.drop-area');
+let dragDropText = document.querySelector("h2");
+let button = document.querySelector("button");
+let input = document.querySelector("#input-file");
+let preview = document.querySelector("#preview");
+const events = ['dragover', 'dragleave', 'drop'];
 
-const validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
-
-
-//PER DESACTIVAR EL DRAG-DROP X DEFECTE
-['dragover', 'dragleave', 'drop'].forEach(evt => {
-    dropArea.addEventListener(evt, prevDefault);
+events.forEach(function(event) {
+  dropArea.addEventListener(event, prevDefault);
 });
 
 function prevDefault(e) {
-    e.preventDefault();
-    e.stopPropagation();
+  e.preventDefault();
+  e.stopPropagation();
 }
 
-// DRAGOVER
-dropArea.addEventListener("dragover", function(){
-    dropArea.classList.add('active');
-    dragDropText.innerHTML  = "Deixa anar per carregar";
+dropArea.addEventListener('dragover', function() {
+  dropArea.classList.add('active');
+  dragDropText.innerHTML = "Drop to upload files";
 });
 
-// DRAGLEAVE
-dropArea.addEventListener("dragleave", function(){
-    dropArea.classList.remove('active');
-    dragDropText.innerHTML  = "Arrossega i deixa anar";
+dropArea.addEventListener('dragleave', function() {
+  dropArea.classList.remove('active');
+  dragDropText.innerHTML = "Drag & Drop files";
 });
 
-//DROP
-dropArea.addEventListener("drop", (event) => {
-
-    dropArea.classList.remove('active');
-    dragDropText.innerHTML  = "Arrossega i deixa anar";
-    let droppedFiles = Array.from(e.dataTransfer.files);
-    arrayDocuments = arrayDocuments.concat(droppedFiles);
-    showFiles(arrayDocuments);
-
+dropArea.addEventListener("drop", function(e) {
+  dropArea.classList.remove("active");
+  let fitxersArray = Array.from(e.dataTransfer.files);
+  arrayDocuments = arrayDocuments.concat(fitxersArray);
+  showFiles(arrayDocuments);
+  console.log(arrayDocuments);
 });
 
 button.addEventListener("click", function(e) {
-    e.preventDefault();
-    input.click();
+  e.preventDefault();
+  input.click();
 });
-  
+
 input.addEventListener("change", function(e) {
-    let select = Array.from(input.files);
-    arrayDocuments = arrayDocuments.concat(select);
-    showFiles(arrayDocuments);
-    input.value = null;
+  let select = Array.from(input.files);
+  arrayDocuments = arrayDocuments.concat(select);
+  showFiles(arrayDocuments);
+  input.value = null;
 });
-  
-//FUNCIONS
-function showFiles(documents) {
-    if (documents.length > 0) {
-        documents.forEach((document, index) => {
-            processFile(document, index);
-        });
-    }
+
+function showFiles(fitxers) {
+  preview.innerHTML = "";
+  fitxers.forEach((fitxer, index) => {
+    processFile(fitxer, index);
+  });
 }
 
-function processFile(document, index) {
-    const docType = document.type;
-
-    if (validExtensions.includes(docType)) {
-        let reader = new FileReader();
-        reader.readAsDataURL(document);
-        reader.onload = function() {
-          let prev = `<div class="previewImage">
-                      <img id="img${index}" src="${reader.result}"/>
-                      <span>${document.name}</span>
-                      <span onclick="removeFile(${index})" class="material-symbols-outlined removeBtn">x</span>
-                      </div>`;
-          preview.innerHTML += prev;
-        };
-      } 
-    else {
-        arrayDocuments.splice(index, 1);
-        alert("El arxiu seleccionat no és una imatge!!");
-    }
+function processFile(fitxer, index) {
+  const validExtensions = ["image/jpeg", "image/jpg", "image/png", "image/gif"];
+  const docType = fitxer.type;
+  if (validExtensions.includes(docType)) {
+    let reader = new FileReader();
+    reader.readAsDataURL(fitxer);
+    reader.onload = function() {
+      let prev = `<div class="previewImage">
+                  <img id="img${index}" src="${reader.result}"/>
+                  <span>${fitxer.name}</span>
+                  <span onclick="removeFile(${index})" class="material-symbols-outlined removeBtn">x</span>
+                  </div>`;
+      preview.innerHTML += prev;
+    };
+  } else {
+    arrayDocuments.splice(index, 1);
+    alert("El fichero seleccionado no és una imagen.");
+  }
 }
 
 function removeFile(index) {
     arrayDocuments.splice(index, 1);
-    showFiles(arrayDocuments);
+  showFiles(arrayDocuments);
 }
