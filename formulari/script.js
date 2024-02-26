@@ -110,28 +110,7 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/*--CODI POSTAL
-  sé que hauria de fer-ho a traves del formulari, però no me'n ensurto. 
---*/
-
-/*
-document.addEventListener("DOMContentLoaded", function () {
-  codipInput.addEventListener("focusout", function () {
-    if (codipInput.value.trim() === "") {
-      codipInput.style.borderColor = "red";
-      document.getElementById("codipError").innerText =
-        "Aquest camp és obligatori";
-      document.getElementById("codipError").style.color = "red";
-      
-    } else {
-      codipInput.style.borderColor = "green";
-      document.getElementById("codipError").innerText = "";
-    }
-  });
-});
-*/
-
-
+/*--CODI POSTAL--*/
 document.addEventListener('DOMContentLoaded', function() {
 
   form.addEventListener('submit', function(event) {
@@ -139,7 +118,7 @@ document.addEventListener('DOMContentLoaded', function() {
       event.preventDefault(); 
       codipError.innerText = 'La dirección postal es obligatoria';
     } else {
-      codipError.innerText = ''; // Limpiar el mensaje de error
+      codipError.innerText = ''; 
     }
   });
 
