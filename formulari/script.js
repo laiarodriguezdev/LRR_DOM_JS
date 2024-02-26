@@ -133,3 +133,39 @@ document.addEventListener('DOMContentLoaded', function() {
     }
   });
 });
+
+function validateForm() {
+
+  if (usuariInput.value.trim() === '') {
+    document.getElementById('usuariError').innerText = 'Aquest camp és obligatori';
+    return false;
+  }
+
+  if (emailInput.value.trim() === '') {
+    document.getElementById('emailError').innerText = 'Aquest camp és obligatori';
+    return false;
+  }
+
+  if (contrasenyaInput.value.trim() === '') {
+    document.getElementById('contraError').innerText = 'Aquest camp és obligatori';
+    return false;
+  }
+
+  if (contrasenya2Input.value.trim() === '') {
+    document.getElementById('contra2Error').innerText = 'Aquest camp és obligatori';
+    return false;
+  }
+
+  if (contrasenyaInput.value !== contrasenya2Input.value) {
+    document.getElementById('contra2Error').innerText = 'Les contrasenyes no coincideixen';
+    return false;
+  }
+
+  if (codipInput.value.trim() === '') {
+    document.getElementById('codipError').innerText = 'Aquest camp és obligatori';
+    return false;
+  }
+
+  return true;
+}
+
