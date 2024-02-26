@@ -1,30 +1,35 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <link rel="stylesheet" href="style.css">
-    <script src="script.js"></script>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <link rel="stylesheet" href="style.css" />
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-</head>
-<body>
+  </head>
+  <body>
     <form id="registroForm">
-        <label for="usuari">Usuari:</label>
-        <input type="text" id="usuari" required><br><br>
-      
-        <label for="email">Correu electrónico:</label>
-        <input type="email" id="email" required><br><br>
-      
-        <label for="contrasenya">Contrasenya:</label>
-        <input type="password" id="contrasenya" required><br><br>
-      
-        <label for="contrasenya2">Contrasenya:</label>
-        <input type="password" id="contrasenya2" required><br><br>
-      
-        <label for="codip">Codi Postal:</label>
-        <input type="text" id="codip" required><br><br>
-      
-        <input type="submit" value="Registra't">
-      </form>
-</body>
+      <label for="usuari">Usuari:</label>
+      <input type="text" id="usuari" required />
+      <div id="usuariError"></div>
+
+      <label for="email">Correu electrónico:</label>
+      <input type="email" id="email" required />
+      <div id="emailError"></div>
+
+      <label for="contrasenya">Contrasenya:</label>
+      <input type="password" id="contrasenya" required /><br /><br />
+      <div id="contraError"></div>
+
+      <label for="contrasenya2">Contrasenya:</label>
+      <input type="password" id="contrasenya2" required /><br /><br />
+      <div id="contra2Error"></div>
+
+      <label for="codip">Codi Postal:</label>
+      <input type="text" id="codip" required /><br /><br />
+      <div id="codiError"></div>
+
+      <input type="submit" value="Registra't" />
+    </form>
+  </body>
+  <script src="script.js"></script>
 </html>
