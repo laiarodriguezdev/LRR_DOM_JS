@@ -6,6 +6,7 @@ const emailInput = document.getElementById("email");
 const contrasenyaInput = document.getElementById("contrasenya");
 const contrasenya2Input = document.getElementById("contrasenya2");
 const codipInput = document.getElementById("codip");
+const codipError = document.getElementById("codipError");
 
 /*--USUARI--*/
 
@@ -109,17 +110,47 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
-/*--CODI POSTAL--*/
+/*--CODI POSTAL
+  sé que hauria de fer-ho a traves del formulari, però no me'n ensurto. 
+--*/
 
+/*
 document.addEventListener("DOMContentLoaded", function () {
-  const codipError = document.getElementById("codipError");
-
-  form.addEventListener("submit", function (event) {
+  codipInput.addEventListener("focusout", function () {
     if (codipInput.value.trim() === "") {
-      event.preventDefault();
-      codipError.innerText = "La direcció postal és obligatoria";
+      codipInput.style.borderColor = "red";
+      document.getElementById("codipError").innerText =
+        "Aquest camp és obligatori";
+      document.getElementById("codipError").style.color = "red";
+      
     } else {
-      codipError.innerText = "";
+      codipInput.style.borderColor = "green";
+      document.getElementById("codipError").innerText = "";
+    }
+  });
+});
+*/
+
+
+document.addEventListener('DOMContentLoaded', function() {
+
+  form.addEventListener('submit', function(event) {
+    if (adrecaInput.value.trim() === '') {
+      event.preventDefault(); 
+      codipError.innerText = 'La dirección postal es obligatoria';
+    } else {
+      codipError.innerText = ''; // Limpiar el mensaje de error
+    }
+  });
+
+  codipInput.addEventListener('focusout', function() {
+    if (codipInput.value.trim() === '') {
+      codipInput.style.borderColor = 'red';
+      document.getElementById('codipError').innerText = 'Aquest camp és obligatori';
+      document.getElementById('codipError').style.color = 'red';
+    } else {
+      codipInput.style.borderColor = 'green';
+      document.getElementById('codipError').innerText = '';
     }
   });
 });
