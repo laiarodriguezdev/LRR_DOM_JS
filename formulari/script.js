@@ -1,4 +1,6 @@
 /*--CONSTANTS--*/
+const form = document.getElementById("formulariLaia");
+
 const usuariInput = document.getElementById("usuari");
 const emailInput = document.getElementById("email");
 const contrasenyaInput = document.getElementById("contrasenya");
@@ -103,6 +105,21 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("contra2Error").innerText =
         "Les contrasenyes no coincideixen";
       document.getElementById("contra2Error").style.color = "red";
+    }
+  });
+});
+
+/*--CODI POSTAL--*/
+
+document.addEventListener("DOMContentLoaded", function () {
+  const codipError = document.getElementById("codipError");
+
+  form.addEventListener("submit", function (event) {
+    if (codipInput.value.trim() === "") {
+      event.preventDefault();
+      codipError.innerText = "La direcció postal és obligatoria";
+    } else {
+      codipError.innerText = "";
     }
   });
 });
