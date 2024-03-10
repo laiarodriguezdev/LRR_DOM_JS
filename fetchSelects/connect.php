@@ -31,8 +31,8 @@ if (!$connect) {
         if($numResultat > 0){
             while ($row = mysqli_fetch_assoc($connexio)) {
                 $object = new stdClass();
-                $object->nom = $row["name"];
-                $object->id = $row["subId"];
+                $object->subId= $row["subcategoriaId"];
+                $object->name = $row["subcategoriaName"];
 
                 array_push($return, $object);
             }
