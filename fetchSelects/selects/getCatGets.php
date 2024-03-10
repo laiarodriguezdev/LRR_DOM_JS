@@ -6,8 +6,7 @@
     define("DB_PORT", 3306);
     $conexionBD = null;  
 
-$connect = mysqli_connect(DB_HOST, DB_USER, DB_PSW, DB_NAME, DB_PORT);
-
+    $connect = mysqli_connect(DB_HOST, DB_USER, DB_PSW, DB_NAME, DB_PORT);
 
 if (!$connect) {
     echo "Error: " . mysqli_connect_error();
@@ -32,7 +31,6 @@ if (!$connect) {
     } else {
         echo "Error en la consulta: " . mysqli_error($connect);
     }
-
 
     echo json_encode($return);
     $connect->close();

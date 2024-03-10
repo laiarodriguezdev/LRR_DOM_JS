@@ -7,7 +7,7 @@
     $conexionBD = null;  
     $categoriaID = $_POST['categoria'];
 
-$connect = mysqli_connect(DB_HOST, DB_USER, DB_PSW, DB_NAME, DB_PORT);
+    $connect = mysqli_connect(DB_HOST, DB_USER, DB_PSW, DB_NAME, DB_PORT);
 
 if (!$connect) {
     echo "Error: " . mysqli_connect_error();
@@ -24,7 +24,6 @@ if (!$connect) {
                 $object->subId= $row["subcategoriaId"];
                 $object->name = $row["subcategoriaName"];
                 $object->categoriaId = $row["categoriaId"];
-
                 array_push($return, $object);
             }
         } else {
