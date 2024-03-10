@@ -1,0 +1,30 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+form {
+    width: 400px;
+    margin: 20px auto;
+    background-color: grey;
+    padding: 20px;
+    border-radius: 6px;
+}
+select {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+    border-radius: 4px;
+    border: 1px solid #131313;
+}
+
+input[type="submit" i]{
+    background-color: #739ebbe3;
+    margin: auto;
+    color: #131313;
+    border: 2px solid #131313;
+    padding: 8PX;
+    border-radius: 8px;
+    display: block;
+    position: relative;
+}
