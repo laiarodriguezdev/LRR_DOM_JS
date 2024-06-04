@@ -21,6 +21,17 @@ if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }
 
+//ELIMINAR DES DE BBDD
+if ($_SERVER["REQUEST_METHOD"] == "POST" && isset($_POST['action'])&& $_POST['action']=='delete') {
+    $id = $_POST['id'];
+    $delete = "DELETE FROM productes WHERE id = $id";
+    if ($conn->query($delete)===TRUE) {
+        echo "Producte eliminat correctament";
+    }else{
+        echo "No s'ha pogut eliminar el producte per aquest error: " . $conn->error;
+    }
+}
+
 $sql = "SELECT * FROM productes";
 
 $result = $conn->query($sql);
@@ -29,14 +40,16 @@ $array = array();
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        array_push($array, array("id" =>$row["id"], "nom"=>$row["nomProducte"]));            
+        array_push($array, array("id" =>$row["id"], "nomProducte"=>$row["nomProducte"]));            
     }
 } else {
     echo "0 results";
 }
 
 $conn->close();
+
 ?>
+
 <body class="container mt-5 w-80">
     <div class="row">
         <div class="col">
@@ -69,9 +82,9 @@ $conn->close();
                         for($i=0; $i<sizeof($array); $i++){
                             echo '<tr>
                                         <th scope="row">' . $array[$i]["id"] . '</th>
-                                        <td>' . $array[$i]["nom"] . '</td>
+                                        <td>' . $array[$i]["nomProducte"] . '</td>
                                         <td><p idProd="' . $array[$i]["id"] . '" class="btnEdit btn btn-outline-info">Edit</p></td>
-                                        <td><a href="" class="btn btn-outline-danger">Remove</a></td>
+                                        <td><a idProd="' . $array[$i]["id"] . '" href="" class="btnRemove btn btn-outline-danger">Remove</a></td>
                                     </tr>';
                         }  
                     ?>
@@ -79,6 +92,7 @@ $conn->close();
             </table>
         </div>
     </div>
+
 
     <script>
         let btnEdit = document.querySelectorAll(".btnEdit");
@@ -97,13 +111,45 @@ $conn->close();
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
-                    document.getElementById("nomProducte").value = data.nomProducte;
+                    document.getElementById("nomProducte").value = data.nom;
                     document.getElementById("addEdit").value = data.addEdit;
                 })
                 .catch((error) => {});
 
             })
         })
+
+        //BUTTON ELIMINAR
+        document.addEventListener("DOMContentLoaded", function() {
+        let btnRemove = document.querySelectorAll(".btnRemove");
+        btnRemove.forEach(el => {
+            el.addEventListener("click", function(e) {
+                e.preventDefault(); // EVITO EL COMPORTAMENT X DEFECTE DEL LINK. 
+                
+                let productId = this.getAttribute("idProd");
+                
+                let formData = new FormData();
+                formData.append("id", productId);
+                formData.append("action", "delete");
+
+                let options = {
+                    method: 'POST',
+                    body: formData
+                };
+
+                fetch(window.location.href, options)
+                    .then(response => response.text())
+                    .then(data => {
+                        // console.log(data);
+                        location.reload(); //TORNO A CARREGAR LA PAGINA 
+                    })
+                    .catch(error => {
+                        console.error('Error:', error);
+                    });
+            });
+        });
+    });
+
     </script>
 </body>
 </html>

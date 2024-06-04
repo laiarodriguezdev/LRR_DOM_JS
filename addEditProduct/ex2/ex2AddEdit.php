@@ -30,7 +30,7 @@ if (isset($_POST["nomProducte"]) && !empty($_POST["nomProducte"])) {
 
     $conn->close();
     
-    header('Location: ex1FormLlistat.php');
+    header('Location: ex2FormLlistat.php');
     exit();  
 } else {
     echo "No product name provided";
