@@ -10,12 +10,13 @@
 
 <?php
 
-    $servername = "bbdd.martamillanlom.cat";
-    $username = "ddb193275";
-    $password = "bbddTest12!%";
-    $dbname = "ddb193275";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "lrraddedit";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
+    
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }
@@ -58,18 +59,13 @@
                                 <th scope="row">' . $array[$i]["id"] . '</th>
                                 <td>' . $array[$i]["nom"] . '</td>
                                 <td><a href="ex1Form.php?id=' . $array[$i]["id"] . '" class="btn btn-outline-info">Edit</a></td>
-                                <td><a href="" class="btn btn-outline-danger">Remove</a></td>
+                                <td><a href="ex1Eliminar.php?id='. $array[$i]["id"] .'" class="btn btn-outline-danger">Remove</a></td>
                             </tr>';
                 }
-                 
-                    
-                        
-
             ?>
     
         </tbody>
     </table>
-
 
 </body>
 </html>

@@ -11,10 +11,10 @@
 <?php 
 
     if(isset($_GET["id"]) && !empty($_GET["id"])){
-        $servername = "bbdd.martamillanlom.cat";
-        $username = "ddb193275";
-        $password = "bbddTest12!%";
-        $dbname = "ddb193275";
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $dbname = "lrraddedit";
 
         $conn = new mysqli($servername, $username, $password, $dbname);
         if ($conn->connect_error) {
