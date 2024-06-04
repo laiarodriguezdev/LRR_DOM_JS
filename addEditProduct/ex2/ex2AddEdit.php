@@ -1,13 +1,12 @@
 <?php
     
-    $servername = "bbdd.martamillanlom.cat";
-    $username = "ddb193275";
-    $password = "bbddTest12!%";
-    $dbname = "ddb193275";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "lrraddedit";
 
-    // Create connection
     $conn = new mysqli($servername, $username, $password, $dbname);
-    // Check connection
+
     if ($conn->connect_error) {
         die("Connection failed: " . $conn->connect_error);
     }

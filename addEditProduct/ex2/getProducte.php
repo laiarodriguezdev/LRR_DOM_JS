@@ -1,10 +1,10 @@
 <?php
 
 if(isset($_POST["id"]) && !empty($_POST["id"])){
-    $servername = "bbdd.martamillanlom.cat";
-    $username = "ddb193275";
-    $password = "bbddTest12!%";
-    $dbname = "ddb193275";
+    $servername = "localhost";
+    $username = "root";
+    $password = "";
+    $dbname = "lrraddedit";
 
     $conn = new mysqli($servername, $username, $password, $dbname);
     if ($conn->connect_error) {
@@ -22,9 +22,7 @@ if(isset($_POST["id"]) && !empty($_POST["id"])){
         $object = new stdClass();
         $object->nom = $row["nom"];
         $object->addEdit = $row["id"];
-       
         echo json_encode($object);
-
     } else {
         echo "0 results";
     }
