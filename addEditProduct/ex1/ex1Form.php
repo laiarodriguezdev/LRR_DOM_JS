@@ -29,7 +29,7 @@
 
         if ($result->num_rows > 0) {
             $row = $result->fetch_assoc();
-            $nom = $row["nom"];
+            $nom = $row["nomProducte"];
             $addEdit = $row["id"];
         } else {
             echo "0 results";
@@ -40,7 +40,6 @@
         $nom = "";
         $addEdit = 0;
     }
-
 ?>
 <body class="container mt-5 w-80">
     <h2 class="mb-3">Formulari</h2>

@@ -29,7 +29,7 @@
 
     if ($result->num_rows > 0) {
         while($row = $result->fetch_assoc()) {
-            array_push($array, array("id" =>$row["id"], "nom"=>$row["nom"]));            
+            array_push($array, array("id" =>$row["id"], "nom"=>$row["nomProducte"]));            
         }
     } else {
         echo "0 results";
