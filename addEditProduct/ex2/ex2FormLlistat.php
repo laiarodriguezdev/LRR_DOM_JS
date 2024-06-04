@@ -29,7 +29,7 @@ $array = array();
 
 if ($result->num_rows > 0) {
     while($row = $result->fetch_assoc()) {
-        array_push($array, array("id" =>$row["id"], "nom"=>$row["nom"]));            
+        array_push($array, array("id" =>$row["id"], "nom"=>$row["nomProducte"]));            
     }
 } else {
     echo "0 results";
@@ -97,7 +97,7 @@ $conn->close();
                 .then((response) => response.json())
                 .then((data) => {
                     console.log(data);
-                    document.getElementById("nomProducte").value = data.nom;
+                    document.getElementById("nomProducte").value = data.nomProducte;
                     document.getElementById("addEdit").value = data.addEdit;
                 })
                 .catch((error) => {});
