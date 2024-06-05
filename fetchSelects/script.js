@@ -1,14 +1,13 @@
 const categoriaSelect = document.getElementById("categoriaSelect");
 const subcategoriaSelect = document.getElementById("subcategoriaSelect");
 
-// CATEGORIA
-fetch("getCatGets.php")
+fetch("./selects/getCatGets.php")
   .then(response => response.json())
   .then(data => {
     data.forEach(categoria => {
       let optionSelect = document.createElement("option");
-      optionSelect.value = categoria.id; 
-      optionSelect.text = categoria.name; 
+      optionSelect.value = categoria.categoriaId;
+      optionSelect.text = categoria.categoriaName;
       categoriaSelect.appendChild(optionSelect);
     });
   })
@@ -21,7 +20,7 @@ categoriaSelect.addEventListener("change", function() {
   console.log("Valor:", categoriaValor);
 
   let formData = new FormData();
-  formData.append("categoria", categoriaValor); 
+  formData.append("categoria", categoriaValor);
 
   subcategoriaSelect.innerHTML = '';
 
@@ -30,14 +29,13 @@ categoriaSelect.addEventListener("change", function() {
     body: formData
   };
 
-  // SUBCATEGORIA
-  fetch("getSubGets.php", options)
+  fetch("./selects/getSubCats.php", options)
     .then(response => response.json())
     .then(data => {
       data.forEach(subcategoria => {
         let optionSelect = document.createElement("option");
-        optionSelect.value = subcategoria.id;
-        optionSelect.text = subcategoria.name;
+        optionSelect.value = subcategoria.subcategoriaId;
+        optionSelect.text = subcategoria.subcategoriaName;
         subcategoriaSelect.appendChild(optionSelect);
       });
     })
