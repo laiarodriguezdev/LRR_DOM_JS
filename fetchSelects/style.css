@@ -3,13 +3,14 @@ body {
     padding: 0;
 }
 
-form {
+.laia {
     width: 400px;
     margin: 20px auto;
     background-color: grey;
     padding: 20px;
     border-radius: 6px;
 }
+
 select {
     width: 100%;
     padding: 8px;
