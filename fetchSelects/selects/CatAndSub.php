@@ -7,14 +7,14 @@ $dbpass = "";
 $connect = new mysqli($dbhost, $dbuser, $dbpass, $dbname);
 
 if ($connect->connect_error) {
-    die("No se pudo conectar con la base de datos: " . $connect->connect_error);
+    die("No sha pogut connectar amb la BBDD: " . $connect->connect_error);
 }
 
 if (isset($_POST['cat1'])) {
     $cat = $connect->real_escape_string($_POST['cat1']);
-    $subCats = "SELECT * FROM subcategories WHERE categoriaId = $cat"; // Asumiendo que 'categoriaId' es el campo correcto en tu tabla de subcategorías
-    $response = $connect->query($subCats);
-    $subCategories = array();
+    $subQuery = "SELECT * FROM subcategories WHERE categoriaId = $cat";
+    $response = $connect->query($subQuery);
+    $subcategories = array();
 
     if ($response && $response->num_rows > 0) {
         while ($row = $response->fetch_assoc()) {
@@ -22,14 +22,14 @@ if (isset($_POST['cat1'])) {
                 'subcategoriaId' => $row['subcategoriaId'],
                 'subcategoriaName' => $row['subcategoriaName']
             );
-            array_push($subCategories, $subCategoria);
+            array_push($subcategories, $subCategoria);
         }
     }
-    echo json_encode($subCategories);
+    echo json_encode($subcategories);
 } else {
-    $sql = "SELECT * FROM categories";
-    $result = $connect->query($sql);
-    $categorias = array();
+    $catQuery = "SELECT * FROM categories";
+    $result = $connect->query($catQuery);
+    $categories = array();
 
     if ($result && $result->num_rows > 0) {
         while ($row = $result->fetch_assoc()) {
@@ -37,10 +37,10 @@ if (isset($_POST['cat1'])) {
                 'categoriaId' => $row['categoriaId'],
                 'categoriaName' => $row['categoriaName']
             );
-            array_push($categorias, $categoria);
+            array_push($categories, $categoria);
         }
     }
-    echo json_encode($categorias);
+    echo json_encode($categories);
 }
 
 $connect->close();

@@ -2,7 +2,7 @@ document.addEventListener("DOMContentLoaded", function () {
     fetch("./selects/CatAndSub.php")
         .then((response) => {
             if (!response.ok) {
-                throw new Error('Hubo un problema al obtener las categorías.');
+                throw new Error('Hi ha hagut un problema al seleccionar les categories');
             }
             return response.json();
         })
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
 document.getElementById("cat1").addEventListener("change", function () {
     let select = this.value;
-    console.log(`Categoria seleccionada: ${select}`);
+    // console.log(`Categoria seleccionada: ${select}`);
 
     let formData = new FormData();
     formData.append("cat1", select);
@@ -38,7 +38,7 @@ document.getElementById("cat1").addEventListener("change", function () {
     fetch("./selects/CatAndSub.php", options)
         .then((response) => {
             if (!response.ok) {
-                throw new Error('Hubo un problema al obtener las subcategorías.');
+                throw new Error('Hi ha hagut un problema al seleccionar les subcategories');
             }
             return response.json();
         })
@@ -47,19 +47,19 @@ document.getElementById("cat1").addEventListener("change", function () {
             cat2.innerHTML = "";
 
             if (data.length > 0) {
-                data.forEach(function (element) {
+                data.forEach(function (subc) {
                     let opt = document.createElement("option");
-                    opt.value = element.subcategoriaId;
-                    opt.text = element.subcategoriaName;
+                    opt.value = subc.subcategoriaId;
+                    opt.text = subc.subcategoriaName;
                     cat2.appendChild(opt);
                 });
             } else {
                 let opt = document.createElement("option");
-                opt.text = "No tiene subcategorias";
+                opt.text = "No té subcategories";
                 cat2.appendChild(opt);
             }
         })
         .catch((error) => {
-            console.error(error);
+            console.error("Error: ", error);
         });
 });
