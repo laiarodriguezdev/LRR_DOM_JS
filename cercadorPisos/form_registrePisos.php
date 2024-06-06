@@ -136,7 +136,7 @@
 					
 					<button class="btn btn-primary" type="submit">Registrar</button>
 
-					<button class="btn btn-info" onclick="visualitza">Visualitzar</button>
+					<button class="btn btn-info" onclick="visualitza()">Visualitzar</button>
 				</form>
 			</div>
 

@@ -11,11 +11,10 @@ if (!$conn) {
     die("Connexió fallida: " . mysqli_connect_error());
 }
 
-// Obtindre l'ID del districte de la petició POST
-$districte_id = $_POST['id_districte']; 
+// Em peta aqui aixi que ho comento. 
+// $districte_id = $_POST['id_districte']; 
 
-// Fer una consulta per obtenir els barris basats en l'ID del districte
-$sql = "SELECT id, name FROM barris WHERE id_districte = $districte_id ORDER BY name ASC";
+$sql = "SELECT id, id_districte, name FROM barris ORDER BY name ASC";
 $result = mysqli_query($conn, $sql);
 
 // Comprovar si hi ha resultats
@@ -23,7 +22,7 @@ if (mysqli_num_rows($result) > 0) {
     // Construir les opcions del select dels barris
     $options = "";
     while ($row = mysqli_fetch_assoc($result)) {
-        $options .= "<option value='" . $row['id'] . "'>" . $row['name'] . "</option>";
+        $options .= "<option value='" . $row['id_districte'] . "'>" . $row['name'] . "</option>";
     }
     echo $options;
 } else {

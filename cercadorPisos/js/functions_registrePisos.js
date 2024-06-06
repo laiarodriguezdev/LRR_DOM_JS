@@ -16,13 +16,6 @@ let msgNomPis = document.querySelector("#msgnomPis");
 let msgDir = document.querySelector("#msgdir");
 let msgPreu = document.querySelector("#msgpreu");
 
-// function visualitza() {
-//     console.log("Nom pis:", nom.value);
-//     msgNomPis.innerText = nom.value + ' ' + barri.value + ', ' + districte.value;
-//     msgDir.innerText = via.value + ' ' + nomVia.value + ' ' + numeroVia.value + ' ' + pis.value + ' ' + escala.value + ' ' + porta.value + ' · ' + cp.value + ' · ' + districte.options[districte.selectedIndex].text + ' · ' + barri.options[barri.selectedIndex].text + ' · ' + poblacio.options[poblacio.selectedIndex].text;
-//     msgPreu.innerText = preu.value + '€';
-// }
-
 $(document).ready(function() {
     // Deshabilitar el select dels barris
     $('#selectBarri').prop('disabled', true);
@@ -49,3 +42,10 @@ $(document).ready(function() {
         });
     });
 });
+
+function visualitza() {
+    console.log("Nom pis:", nom.innerText);
+    msgNomPis.innerText = nom.innerText + ' ' + barri.innerText + ', ' + districte.innerText;
+    msgDir.innerText = via.textContent + ' ' + nomVia.textContent + ' ' + numeroVia.textContent + ' ' + pis.textContent + ' ' + escala.textContent + ' ' + porta.textContent + ' · ' + cp.value + ' · ' + districte.options[districte.selectedIndex].text + ' · ' + barri.options[barri.selectedIndex].text + ' · ' + poblacio.options[poblacio.selectedIndex].text;
+    msgPreu.innerText = preu.textContent + '€';
+}
