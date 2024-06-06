@@ -10,7 +10,14 @@
 	<link rel="stylesheet" href="./css/style.css">
 	<script src="./js/functions.js"></script>
 </head>
+<?php
+	$servername = "localhost";
+	$username = "root";
+	$password = "";
+	$dbname = "m6";
 
+	$conn = mysqli_connect($servername, $username, $password, $dbname);
+?>
 <body>
 	<div class="container pt-5 pb-5">
 		<h4>Formulari de registre de pisos</h4>
@@ -143,7 +150,6 @@
 			</div>
 		</div>
 	</div>
-
-
 </body>
+	<script src="./js/functions.js"></script>
 </html>
