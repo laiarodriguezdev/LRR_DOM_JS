@@ -8,7 +8,6 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
 
 	<link rel="stylesheet" href="./css/style.css">
-	<script src="./js/functions.js"></script>
 </head>
 <?php
 	$servername = "localhost";
@@ -137,19 +136,19 @@
 					
 					<button class="btn btn-primary" type="submit">Registrar</button>
 
-					<button class="btn btn-info">Visualitzar</button>
+					<button class="btn btn-info" onclick="visualitza">Visualitzar</button>
 				</form>
 			</div>
 
-			<div class="col-6 pt-5">
-				<h4 id="nomPis">Nom + barri, districte</h4>
-				<p id="dir">Via Nom Número Pis Escala Porta · CP · Districte · Barri · Pobliacio</p>
-				<p id="preu">300€</p>
+			<div class="col-6 pt-5" id="visualitza">
+				<h4 id="msgnomPis">Nom + barri, districte</h4>
+				<p id="msgdir">Via Nom Número Pis Escala Porta · CP · Districte · Barri · Pobliacio</p>
+				<p id="msgpreu">300€</p>
 				<p>Text</p>
 
 			</div>
 		</div>
 	</div>
 </body>
-	<script src="./js/functions.js"></script>
+	<script src="./js/functions_registrePisos.js"></script>
 </html>
